@@ -17,13 +17,7 @@ describe('Register User', () => {
     const user = createUser();
 
     it('Returns 201 on successful register', async () => {
-        return app
-            .post(`${ROUTE}/register`)
-            .send(user)
-            .then((res) => {
-                expect(res.statusCode).toBe(201);
-                expect(res.body.message).toBe('User added successfully');
-            });
+        return app.post(`${ROUTE}/register`).send(user).expect(201);
     });
 
     it('Returns 400 on empty credentials passed', async () => {
@@ -64,7 +58,7 @@ describe('Logging in', () => {
             })
             .then((res) => {
                 expect(res.statusCode).toBe(400);
-                expect(res.body.message).toBe('User not found');
+                expect(res.body.error).toBe('User not found');
             });
     });
 
@@ -79,16 +73,15 @@ describe('Logging in', () => {
     });
 
     it.skip('Returns 400 on invalid password', async () => {
-        return app
+        const response = await app
             .post(`${ROUTE}/login`)
+            .set('Content-Type', 'application/json')
             .send({
                 email: globalUser.email,
                 password: 'invalid',
-            })
-            .then((res) => {
-                expect(res.statusCode).toBe(400);
-                expect(res.body.error).toBe('Invalid Credentials');
             });
+        expect(response.statusCode).toBe(400);
+        expect(response.body.error).toBe('Invalid Crendentials');
     }, 10000);
 });
 

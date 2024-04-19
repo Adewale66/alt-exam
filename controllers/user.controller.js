@@ -20,7 +20,13 @@ const createUser = async (req, res) => {
     });
     newUser.setPassword(password);
     await newUser.save();
-    return res.status(201).send({ firstName: newUser.firstName, lastName: newUser.lastName, email: newUser.email});
+    return res
+        .status(201)
+        .send({
+            firstName: newUser.firstName,
+            lastName: newUser.lastName,
+            email: newUser.email,
+        });
 };
 
 const loginUser = async (req, res) => {
@@ -42,12 +48,7 @@ const loginUser = async (req, res) => {
     };
     const token = generateToken(payload);
 
-    return res
-        .status(200)
-        .cookie('access_token', token, {
-            httpOnly: true,
-        })
-        .json(payload);
+    return res.status(200).json({ token: token, user: payload });
 };
 
 const logoutUser = async (req, res) => {

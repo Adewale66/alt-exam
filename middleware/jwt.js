@@ -10,7 +10,8 @@ const generateToken = (payload) => {
 };
 
 const verifyToken = (req, res, next) => {
-    const jwtToken = req.cookies.access_token;
+    const authHeader = req.headers['authorization'];
+    const jwtToken = authHeader && authHeader.split(' ')[1];
 
     if (!jwtToken) return res.status(401).json({ message: 'Unauthorized' });
 

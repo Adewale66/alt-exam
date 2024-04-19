@@ -13,6 +13,8 @@ const createBlog = () => {
     return {
         title: faker.commerce.productName(),
         body: faker.lorem.paragraphs(2),
+        tags: faker.lorem.words(5),
+        description: faker.lorem.sentence(),
     };
 };
 

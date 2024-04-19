@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(loggerMiddleware);
 
-swaggerDocs(app, config.PORT)
+swaggerDocs(app, config.PORT);
 
 app.get('/favicon.ico', (req, res) => res.status(204));
 app.use('/api/v1', userRouter);

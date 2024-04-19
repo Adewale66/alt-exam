@@ -8,7 +8,7 @@ This repository contains the finished work of the second semester Alt school exa
 
 - Clone this repository.
 ```
-$ git clone url
+$ git clone https://github.com/Adewale66/alt-exam
 ```
 - Install Dependency. Project was made using Node 16.0.0.
 ```

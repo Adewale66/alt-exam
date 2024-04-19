@@ -2,7 +2,6 @@ import 'dotenv/config';
 import winston from 'winston';
 import mongoose from 'mongoose';
 
-
 const { combine, timestamp, printf, colorize, align, errors } = winston.format;
 
 const loggerConfig = winston.createLogger({
@@ -60,6 +59,5 @@ const config = {
         }
     },
 };
-
 
 export { config, logger };
