@@ -23,6 +23,7 @@ app.use(
     swaggerUiExpress.setup(swaggerJson)
 );
 app.get("/", (req, res) => res.redirect("/api-docs"));
+
 app.get('/favicon.ico', (req, res) => res.status(204));
 app.use('/api/v1', userRouter);
 app.use('/api/v1', blogRouter);
