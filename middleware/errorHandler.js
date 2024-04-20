@@ -12,7 +12,7 @@ const errorHandler = (error, req, res, next) => {
     } else if (error.name === 'TokenExpiredError') {
         return res.status(401).json({ error: 'token expired' });
     } else if (error.name == 'MongoServerError') {
-        return res.status(400).json({ error: 'User already exists' });
+        return res.status(400).json({ error: 'Resource already exists' });
     } else if (error.name == 'ResourceNotFoundError') {
         return res.status(error.code).json({ error: error.message });
     } else if (error.name == 'EmptyFieldError') {
