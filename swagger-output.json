@@ -5,7 +5,7 @@
         "description": "Documentation for the Blog API",
         "version": "1.0.0"
     },
-    "host": "https://alt-exam-1wtr.onrender.com",
+    "host": "alt-exam-1wtr.onrender.com",
     "basePath": "/",
     "schemes": ["http", "https"],
     "paths": {
