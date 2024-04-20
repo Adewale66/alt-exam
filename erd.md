@@ -28,5 +28,4 @@ erDiagram
     }
 
     User ||--o{ Blog : creates
-	Blog ||..|| User :
 ```
