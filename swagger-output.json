@@ -9,19 +9,9 @@
     "basePath": "/",
     "schemes": ["http"],
     "paths": {
-        "/favicon.ico": {
-            "get": {
-                "description": "",
-                "responses": {
-                    "204": {
-                        "description": "No Content"
-                    }
-                }
-            }
-        },
         "/api/v1/register": {
             "post": {
-                "description": "",
+                "description": "Register a new user",
                 "parameters": [
                     {
                         "name": "body",
@@ -30,16 +20,20 @@
                             "type": "object",
                             "properties": {
                                 "firstName": {
-                                    "example": "any"
+                                    "example": "any",
+                                    "type": "string"
                                 },
                                 "lastName": {
-                                    "example": "any"
+                                    "example": "any",
+                                    "type": "string"
                                 },
                                 "email": {
-                                    "example": "any"
+                                    "example": "any@any.com",
+                                    "type": "string"
                                 },
                                 "password": {
-                                    "example": "any"
+                                    "example": "any",
+                                    "type": "string"
                                 }
                             }
                         }
@@ -48,13 +42,16 @@
                 "responses": {
                     "201": {
                         "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad Request"
                     }
                 }
             }
         },
         "/api/v1/login": {
             "post": {
-                "description": "",
+                "description": "Login a user",
                 "parameters": [
                     {
                         "name": "body",
@@ -63,10 +60,12 @@
                             "type": "object",
                             "properties": {
                                 "email": {
-                                    "example": "any"
+                                    "example": "any@any.com",
+                                    "type": "string"
                                 },
                                 "password": {
-                                    "example": "any"
+                                    "example": "any",
+                                    "type": "string"
                                 }
                             }
                         }
@@ -84,7 +83,7 @@
         },
         "/api/v1/blogs/{id}": {
             "get": {
-                "description": "",
+                "description": "Retrieve a blog post by id",
                 "parameters": [
                     {
                         "name": "id",
@@ -96,12 +95,21 @@
                 "responses": {
                     "200": {
                         "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 }
             },
             "patch": {
-                "description": "",
+                "description": "Update a blog post by id",
                 "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -134,8 +142,14 @@
                 }
             },
             "delete": {
-                "description": "",
+                "description": "Delete a blog post by id",
                 "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -155,7 +169,7 @@
         },
         "/api/v1/blogs": {
             "get": {
-                "description": "",
+                "description": "Retrieve all blog posts",
                 "parameters": [
                     {
                         "name": "author",
@@ -170,7 +184,8 @@
                     {
                         "name": "tags",
                         "in": "query",
-                        "type": "string"
+                        "type": "string",
+                        "example": "tag1,tag2"
                     },
                     {
                         "name": "order_by",
@@ -190,8 +205,14 @@
                 }
             },
             "post": {
-                "description": "",
+                "description": "Create a new blog post",
                 "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
                     {
                         "name": "body",
                         "in": "body",
@@ -199,16 +220,20 @@
                             "type": "object",
                             "properties": {
                                 "title": {
-                                    "example": "any"
+                                    "example": "A random title",
+                                    "type": "string"
                                 },
                                 "desciption": {
-                                    "example": "any"
+                                    "example": "a simple description",
+                                    "type": "string"
                                 },
                                 "tags": {
-                                    "example": "any"
+                                    "example": "tag1,tag2,tag3",
+                                    "type": "string"
                                 },
                                 "body": {
-                                    "example": "any"
+                                    "example": "The body of the blog post",
+                                    "type": "string"
                                 }
                             }
                         }
@@ -226,10 +251,17 @@
         },
         "/api/v1/me": {
             "get": {
-                "description": "",
+                "description": "Retrieve blogs created by the authenticated user",
                 "parameters": [
                     {
+                        "name": "Authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
                         "name": "state",
+                        "enum": ["draft", "published"],
                         "in": "query",
                         "type": "string"
                     },

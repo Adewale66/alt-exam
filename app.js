@@ -6,8 +6,8 @@ import loggerMiddleware from './middleware/logger.js';
 import createHttpError from 'http-errors';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import swaggerDocs from './utils/swagger.js';
-import { config } from './utils/config.js';
+import swaggerUiExpress from 'swagger-ui-express';
+import swaggerJson from './swagger-output.json' assert { type: 'json' };
 
 const app = express();
 
@@ -17,7 +17,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(loggerMiddleware);
 
-swaggerDocs(app, config.PORT);
+app.use(
+    '/api-docs',
+    swaggerUiExpress.serve,
+    swaggerUiExpress.setup(swaggerJson)
+);
 
 app.get('/favicon.ico', (req, res) => res.status(204));
 app.use('/api/v1', userRouter);

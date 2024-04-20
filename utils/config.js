@@ -44,13 +44,13 @@ const config = {
         await mongoose.connection.close();
     },
     connectDB: async () => {
+        const uri = {
+            dev: process.env.MONGO_URI_DEV,
+            test: process.env.MONGO_URI_TEST,
+            prod: process.env.MONGO_URI_PROD,
+        };
+        const MONGO_URI = uri[process.env.NODE_ENV];
         try {
-            let MONGO_URI = process.env.MONGO_URI_PROD;
-            if (process.env.NODE_ENV == 'dev') {
-                MONGO_URI = process.env.MONGO_URI_DEV;
-            } else if (process.env.NODE_ENV == 'test') {
-                MONGO_URI = process.env.MONGO_URI_TEST;
-            }
             mongoose.connect(MONGO_URI).then(() => {
                 logger.info('Mongo db connected!');
             });

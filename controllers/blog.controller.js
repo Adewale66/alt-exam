@@ -93,6 +93,9 @@ const updateBlog = async (req, res) => {
     const id = req.params.id;
     const { state, body } = req.body;
 
+    if (state && state != 'published' && state != 'draft')
+        throw new EmptyFieldError('Invalid state', 400);
+
     const blog = await blogModel
         .findById(id)
         .populate('author', 'firstName lastName')

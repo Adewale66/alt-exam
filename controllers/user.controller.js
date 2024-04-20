@@ -20,13 +20,11 @@ const createUser = async (req, res) => {
     });
     newUser.setPassword(password);
     await newUser.save();
-    return res
-        .status(201)
-        .send({
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
-            email: newUser.email,
-        });
+    return res.status(201).send({
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        email: newUser.email,
+    });
 };
 
 const loginUser = async (req, res) => {

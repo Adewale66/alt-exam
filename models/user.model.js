@@ -1,62 +1,6 @@
 import { model, Schema } from 'mongoose';
 import crypto from 'crypto';
 
-/**
- * @openapi
- * components:
- *  schemas:
- *    CreateUserInput:
- *      type: object
- *      required:
- *        - email
- *        - firstName
- *        - password
- *        - lastName
- *      properties:
- *        email:
- *          type: string
- *          default: jane.doe@example.com
- *        firstName:
- *          type: string
- *          default: Jane
- *        lastName:
- *          type: string
- *          default: Doe
- *        password:
- *          type: string
- *          default: stringPassword123
- *    CreateUserResponse:
- *      type: object
- *      properties:
- *        email:
- *          type: string
- *        firstName:
- *          type: string
- *        lastName:
- *          type: string
- *    BadUserResponse:
- *      type: object
- *      properties:
- *        error:
- *          type: string
- *    LoginUserInput:
- *      type: object
- *      properties:
- *        email:
- *          type: string
- *        password:
- *          type: string
- *    LoggedUserResponse:
- *      type: object
- *      properties:
- *        id:
- *          type: string
- *        firstName:
- *          type: string
- *        lastName:
- *          type: string
- */
-
 const UserSchema = new Schema({
     firstName: {
         type: String,
