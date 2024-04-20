@@ -3,12 +3,12 @@
     "info": {
         "title": "Blog API",
         "description": "Documentation for the Blog API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "contact": {
+            "name": "Adewale Kujore",
+            "url": "https://github.com/Adewale66"
+        }
     },
-	"contact": {
-		"name": "Adewale Kujore",
-		"url": "https://github.com/Adewale66"
-	},
     "host": "alt-exam-1wtr.onrender.com",
     "basePath": "/",
     "schemes": ["https"],
