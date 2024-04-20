@@ -1,4 +1,4 @@
-# Entity relationship diagram
+# Entity relationship diagram for Blog API
 
 [Official documentation](https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram)
 
