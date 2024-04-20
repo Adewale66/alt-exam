@@ -27,5 +27,6 @@ erDiagram
 
     }
 
-    User ||--o{ Blog : has
+    User ||--o{ Blog : creates
+	Blog ||..|| User 
 ```
