@@ -194,6 +194,7 @@
                     {
                         "name": "order_by",
                         "in": "query",
+						"enum": ["reading_time", "timestamp", "read_count"],
                         "type": "string"
                     },
                     {
