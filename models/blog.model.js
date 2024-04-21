@@ -1,36 +1,39 @@
 import { model, Schema } from 'mongoose';
 
-const BlogSchema = Schema({
-    title: {
-        type: String,
-        unique: true,
-        required: [true, 'Blog title is required'],
-    },
-    description: String,
-    author: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-    },
-    state: {
-        type: String,
-        enum: ['draft', 'published'],
-        default: 'draft',
-    },
-    read_count: {
-        type: Number,
-        default: 0,
-    },
-    tags: [
-        {
+const BlogSchema = Schema(
+    {
+        title: {
             type: String,
+            unique: true,
+            required: [true, 'Blog title is required'],
         },
-    ],
-    reading_time: Number,
-    body: {
-        type: String,
-        required: [true, 'Body is required'],
+        description: String,
+        author: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+        },
+        state: {
+            type: String,
+            enum: ['draft', 'published'],
+            default: 'draft',
+        },
+        read_count: {
+            type: Number,
+            default: 0,
+        },
+        tags: [
+            {
+                type: String,
+            },
+        ],
+        reading_time: Number,
+        body: {
+            type: String,
+            required: [true, 'Body is required'],
+        },
     },
-}, { timestamps: true});
+    { timestamps: true }
+);
 
 BlogSchema.set('toJSON', {
     transform: (document, r) => {

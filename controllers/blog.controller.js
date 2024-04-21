@@ -67,7 +67,7 @@ const createBlog = async (req, res) => {
         title,
         body,
         tags: tags ? tags.split(',').map((tag) => tag.toLowerCase()) : [],
-        desciption: desciption | '',
+        desciption: desciption || '',
         author: user.id,
         reading_time,
     });

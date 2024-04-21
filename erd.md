@@ -2,7 +2,6 @@
 
 [Official documentation](https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram)
 
-
 ```mermaid
 erDiagram
     User {
