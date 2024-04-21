@@ -143,7 +143,10 @@
                     },
                     "401": {
                         "description": "Unauthorized"
-                    }
+                    },
+					"404": {
+						"description": "Not Found"
+					}
                 }
             },
             "delete": {
@@ -169,7 +172,10 @@
                     },
                     "401": {
                         "description": "Unauthorized"
-                    }
+                    },
+					"404": {
+						"description": "Not Found"
+					}
                 }
             }
         },
