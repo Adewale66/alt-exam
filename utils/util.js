@@ -4,7 +4,7 @@ export default function readingTime(words) {
 }
 
 function orderByTimeStamp(a, b) {
-    return a.timestamp - b.timestamp;
+    return a.updatedAt - b.updatedAt;
 }
 
 function orderByReadCount(a, b) {

@@ -13,6 +13,7 @@ const BlogSchema = Schema({
     },
     state: {
         type: String,
+        enum: ['draft', 'published'],
         default: 'draft',
     },
     read_count: {
@@ -29,10 +30,7 @@ const BlogSchema = Schema({
         type: String,
         required: [true, 'Body is required'],
     },
-    timestamp: {
-        type: String,
-    },
-});
+}, { timestamps: true});
 
 BlogSchema.set('toJSON', {
     transform: (document, r) => {

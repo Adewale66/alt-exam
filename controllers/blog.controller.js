@@ -24,7 +24,7 @@ const getAllBlogs = async (req, res) => {
         if (tags) {
             let count = 0;
             tags.split(',').forEach((tag) => {
-                if (blog.tags.includes(tag)) count++;
+                if (blog.tags.includes(tag.toLowerCase())) count++;
             });
             if (count == 0) return false;
         }
@@ -66,7 +66,7 @@ const createBlog = async (req, res) => {
     const blog = await new blogModel({
         title,
         body,
-        tags: tags ? tags.split(',') : [],
+        tags: tags ? tags.split(',').map((tag) => tag.toLowerCase()) : [],
         desciption: desciption | '',
         author: user.id,
         reading_time,
